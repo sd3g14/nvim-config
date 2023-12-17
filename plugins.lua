@@ -29,9 +29,6 @@ local plugins = {
       handlers = {}
     }
   },
-  {"simrat39/symbols-outline.nvim",
-    event = "VeryLazy"
-  },
   {
     "mfussenegger/nvim-dap",
     config = function (_, _)
@@ -39,7 +36,21 @@ local plugins = {
     end
   },
   {
+    "mfussenegger/nvim-dap-python",
+    ft = "python",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "rcarriga/nvim-dap-ui",
+    },
+    config = function(_, opts)
+      local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+      require("dap-python").setup(path)
+      require("core.utils").load_mappings("dap")
+    end,
+  },
+  {
     "jose-elias-alvarez/null-ls.nvim",
+    ft={"python"},
     event = "VeryLazy",
     opts = function ()
       return require "custom.configs.null-ls"
@@ -59,9 +70,12 @@ local plugins = {
         "clangd",
         "clang-format",
         "codelldb",
-        "python-lsp-server",
-        "black"
-
+        -- "python-lsp-server",
+        "black",
+        "debugpy",
+        "mypy",
+        "ruff",
+        "pyright"
       }
     }
   },
@@ -73,9 +87,24 @@ local plugins = {
 },
   {"simrat39/symbols-outline.nvim",
     event = "VeryLazy",
-    config = function ()
-      require("symbols-outline").setup()
+    opts = {autofold_depth=0},
+    config = function (_, opts)
+      require("symbols-outline").setup(opts)
       require("core.utils").load_mappings("symbols")
+    end
+  },
+  {
+    "jackMort/ChatGPT.nvim",
+    event="VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim"
+    },
+    config = function (_, _)
+      require("chatgpt").setup({
+        api_key_cmd = "pass show OpenAI/api/tokens/chatgpt.nvim"
+      })
     end
   }
 }

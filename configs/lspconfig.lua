@@ -12,7 +12,13 @@ lspconfig.clangd.setup {
   capabilities = capabilities,
 }
 
-lspconfig.pylsp.setup({on_attach = on_attach,
-capabilities=capabilities, filetypes={"python"},
-settings = { pylsp = {plugins = { pycodestyle ={ ignore = {'W391'}, maxLineLength = 100}}}}
+-- lspconfig.pylsp.setup({on_attach = on_attach,
+-- capabilities=capabilities, filetypes={"python"},
+-- settings = { pylsp = {plugins = { pycodestyle ={ ignore = {'W391'}, maxLineLength = 100}}}}
+-- })
+
+lspconfig.pyright.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = {"python"},
 })
