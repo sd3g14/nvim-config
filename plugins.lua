@@ -102,10 +102,12 @@ local plugins = {
       "nvim-telescope/telescope.nvim"
     },
     config = function (_, _)
-      require("chatgpt").setup({
-        api_key_cmd = "pass show OpenAI/api/tokens/chatgpt.nvim"
-      })
+      require("chatgpt").setup()
     end
+  },
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy=false,
   }
 }
 return plugins
