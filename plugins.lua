@@ -70,12 +70,13 @@ local plugins = {
         "clangd",
         "clang-format",
         "codelldb",
+        "jedi-language-server",
         -- "python-lsp-server",
         "black",
-        "debugpy",
-        "mypy",
-        "ruff",
-        "pyright"
+        -- "debugpy",
+        -- "mypy",
+        -- "ruff",
+        -- "pyright"
       }
     }
   },
@@ -108,6 +109,20 @@ local plugins = {
   {
     "christoomey/vim-tmux-navigator",
     lazy=false,
+  },
+  {
+    "princejoogie/dir-telescope.nvim",
+    event="VeryLazy",
+    dependencies = {"nvim-telescope/telescope.nvim"},
+    config = function()
+      require("dir-telescope").setup({
+        hidden = true,
+        no_ignore = false,
+        show_preview = true,
+      })
+      require("telescope").load_extension("dir")
+      require("core.utils").load_mappings("dir_telescope")
+    end,
   }
 }
 return plugins

@@ -35,4 +35,12 @@ M.symbols = {
 
 }
 
+M.dir_telescope = {
+  plugin = True,
+  n = {
+    ["<leader>fdw"] = {"<cmd>Telescope dir live_grep<CR>", "Live grep in directory"},
+    ["<leader>fdf"] = {"<cmd>Telescope dir find_files<CR>", "Live find files in directory"},
+  }
+}
+
 return M

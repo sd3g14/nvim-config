@@ -17,7 +17,13 @@ lspconfig.clangd.setup {
 -- settings = { pylsp = {plugins = { pycodestyle ={ ignore = {'W391'}, maxLineLength = 100}}}}
 -- })
 
-lspconfig.pyright.setup({
+-- lspconfig.pyright.setup({
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   filetypes = {"python"},
+-- })
+--
+lspconfig.jedi_language_server.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = {"python"},
