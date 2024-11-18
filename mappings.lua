@@ -32,14 +32,22 @@ M.symbols = {
       "Toggle Symbols Outline"
     },
   }
-
 }
 
 M.dir_telescope = {
-  plugin = True,
+  plugin = true,
   n = {
     ["<leader>fdw"] = {"<cmd>Telescope dir live_grep<CR>", "Live grep in directory"},
     ["<leader>fdf"] = {"<cmd>Telescope dir find_files<CR>", "Live find files in directory"},
+  }
+}
+
+M.gp = {
+  n = {
+    ["<leader>gpa"] = {"<cmd>GpAppend<CR>", "Append (after)" },
+    ["<leader>gpb"] = {"<cmd>GpPrepend<CR>","Prepend (before)" },
+    ["<leader>gpc"] = {"<cmd>GpChatNew<CR>", "New Chat" },
+    ["<leader>gpf"] = {"<cmd>GpChatFinder<CR>", "Chat Finder" },
   }
 }
 

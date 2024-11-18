@@ -2,7 +2,7 @@ local plugins = {
   {
     "rcarriga/nvim-dap-ui",
     event = "VeryLazy",
-    dependencies = "mfussenegger/nvim-dap",
+    dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"},
     config = function()
       local dap = require("dap")
       local dapui = require("dapui")
@@ -76,6 +76,7 @@ local plugins = {
         -- "debugpy",
         -- "mypy",
         "ruff",
+        "lua_ls",
         -- "pyright"
       }
     }
@@ -94,18 +95,18 @@ local plugins = {
       require("core.utils").load_mappings("symbols")
     end
   },
-  {
-    "jackMort/ChatGPT.nvim",
-    event="VeryLazy",
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim"
-    },
-    config = function (_, _)
-      require("chatgpt").setup()
-    end
-  },
+{
+    "robitx/gp.nvim",
+    lazy=false,
+    config = function()
+        local conf = {
+          openai_api_key = os.getenv("OPENAI_API_KEY")
+        }
+        require("gp").setup(conf)
+
+        -- Setup shortcuts here (see Usage > Shortcuts in the Documentation/Readme)
+    end,
+},
   {
     "christoomey/vim-tmux-navigator",
     lazy=false,
@@ -123,6 +124,13 @@ local plugins = {
       require("telescope").load_extension("dir")
       require("core.utils").load_mappings("dir_telescope")
     end,
+  },
+  {
+      "iamcco/markdown-preview.nvim",
+      event="VeryLazy",
+      cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+      ft = { "markdown" },
+      build = function() vim.fn["mkdp#util#install"]() end,
   }
 }
 return plugins
