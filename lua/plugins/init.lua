@@ -38,16 +38,6 @@ return {
       },
     },
   },
-  -- override nvim-cmp and add cmp-emoji
-  {
-    "hrsh7th/nvim-cmp",
-    dependencies = { "hrsh7th/cmp-emoji" },
-    ---@param opts cmp.ConfigSchema
-    opts = function(_, opts)
-      table.insert(opts.sources, { name = "emoji" })
-    end,
-  },
-
   -- change some telescope options and a keymap to browse plugin files
   {
     "nvim-telescope/telescope.nvim",
@@ -224,7 +214,7 @@ return {
         -- LSP Server Settings
         ---@type lspconfig.options
         servers = {
-          pylsp = {},
+          jedi_language_server = {},
           lua_ls = {
             -- mason = false, -- set to false if you don't want this server to be installed with mason
             -- Use this to add any additional keymaps

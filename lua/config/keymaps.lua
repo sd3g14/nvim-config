@@ -4,8 +4,8 @@
 
 local map = vim.keymap.set
 -- Comment
-map("n", "<leader>#", "gcc", { desc = "toggle comment", remap = true })
-map("v", "<leader>#", "gc", { desc = "toggle comment", remap = true })
+map("n", "<A-/>", "gcc", { desc = "toggle comment", remap = true })
+map("v", "<A-/>", "gc", { desc = "toggle comment", remap = true })
 
 -- nvimtree
 map("n", "<C-n>", "<cmd>Neotree toggle<CR>", { desc = "nvimtree toggle window" })
