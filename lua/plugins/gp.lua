@@ -2,10 +2,10 @@ return {
   "robitx/gp.nvim",
   lazy = false,
   keys = {
-    { "<leader>cqa", "<cmd>GpAppend<CR>", "Append (after)" },
-    { "<leader>cqb", "<cmd>GpPrepend<CR>", "Prepend (before)" },
-    { "<leader>cqc", "<cmd>GpChatNew<CR>", "New Chat" },
-    { "<leader>cqf", "<cmd>GpChatFinder<CR>", "Chat Finder" },
+    { "<leader>cqa", "<cmd>GpAppend<CR>", desc = "Append (after)" },
+    { "<leader>cqb", "<cmd>GpPrepend<CR>", desc = "Prepend (before)" },
+    { "<leader>cqc", "<cmd>GpChatNew<CR>", desc = "New Chat" },
+    { "<leader>cqf", "<cmd>GpChatFinder<CR>", desc = "Chat Finder" },
   },
   config = function()
     local conf = {

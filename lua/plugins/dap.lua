@@ -15,8 +15,8 @@ M[#M + 1] = {
 M[#M + 1] = {
   "mfussenegger/nvim-dap",
   keys = {
-    { "<leader>db", "<cmd>DapToggleBreakpoint<CR>", "Add breakpoint at line" },
-    { "<leader>dr", "<cmd>DapContinue<CR>", "Start or continue the debugger" },
+    { "<leader>db", "<cmd>DapToggleBreakpoint<CR>", desc = "Add breakpoint at line" },
+    { "<leader>dr", "<cmd>DapContinue<CR>", desc = "Start or continue the debugger" },
   },
 }
 
@@ -29,8 +29,8 @@ M[#M + 1] = {
     "rcarriga/nvim-dap-ui",
   },
   keys = {
-    { "<leader>db", "<cmd>DapToggleBreakpoint<CR>", "Add breakpoint at line" },
-    { "<leader>dr", "<cmd>DapContinue<CR>", "Start or continue the debugger" },
+    { "<leader>db", "<cmd>DapToggleBreakpoint<CR>", desc = "Add breakpoint at line" },
+    { "<leader>dr", "<cmd>DapContinue<CR>", desc = "Start or continue the debugger" },
   },
   config = function(_, opts)
     local path = os.getenv("CONDA_PYTHON_EXE")
