@@ -1,47 +1,50 @@
-return {
-  "ThePrimeagen/harpoon",
-  -- branch = "harpoon2",
-  dependencies = { "nvim-lua/plenary.nvim" },
+local keys = function()
   keys = {
     {
       "<leader>a",
-      "<cmd>lua require('harpoon.mark').add_file()<CR>",
+      function()
+        require("harpoon.mark").add_file()
+      end,
       desc = "Harpoon Mark File",
     },
     {
       "<leader>h",
-      "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>",
+      -- function()
+      --   require("harpoon.ui").toggle_quick_menu()
+      -- end,
+      "<cmd>Telescope harpoon marks<CR>",
       desc = "Harpoon Toggle Quick Menu",
     },
     {
       "<leader><Right>",
-      "<cmd>lua require('harpoon.ui').nav_next()<CR>",
+      function()
+        require("harpoon.ui").nav_next()
+      end,
       desc = "Harpoon Go To Next Mark",
     },
     {
       "<leader><Left>",
-      "<cmd>lua require('harpoon.ui').nav_prev()<CR>",
+      function()
+        require("harpoon.ui").nav_prev()
+      end,
       desc = "Harpoon Go To Previous Mark",
     },
-    {
-      "<leader>1",
-      "<cmd>lua require('harpoon.ui').nav_file(1)<CR>",
-      desc = "Harpoon Go To First Mark",
-    },
-    {
-      "<leader>2",
-      "<cmd>lua require('harpoon.ui').nav_file(2)<CR>",
-      desc = "Harpoon Go To Second Mark",
-    },
-    {
-      "<leader>3",
-      "<cmd>lua require('harpoon.ui').nav_file(3)<CR>",
-      desc = "Harpoon Go To Third Mark",
-    },
-    {
-      "<leader>4",
-      "<cmd>lua require('harpoon.ui').nav_file(4)<CR>",
-      desc = "Harpoon Go To Fourth Mark",
-    },
-  },
+  }
+
+  for i = 1, 4 do
+    table.insert(keys, {
+      "<leader>" .. i,
+      function()
+        require("harpoon.ui").nav_file(i)
+      end,
+      desc = "Harpoon to Mark " .. i,
+    })
+  end
+  return keys
+end
+
+return {
+  "ThePrimeagen/harpoon",
+  dependencies = { "nvim-lua/plenary.nvim" },
+  keys = keys(),
 }
