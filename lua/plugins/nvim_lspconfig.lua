@@ -8,6 +8,7 @@ return {
   opts = {
     ---@type lspconfig.options
     servers = {
+      jedi_language_server = {},
       ruff = {},
       clangd = {},
       texlab = {},
