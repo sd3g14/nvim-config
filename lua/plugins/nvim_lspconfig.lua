@@ -11,7 +11,9 @@ return {
       jedi_language_server = {},
       ruff = {},
       clangd = {},
+      cmake = {},
       texlab = {},
+      jsonls = {},
     },
   },
 }
